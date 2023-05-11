@@ -26,7 +26,7 @@ public class StudentSearchTest {
 
         // Enter a student first name into the search form
         WebElement searchField = driver.findElement(By.name("firstName"));
-        searchField.sendKeys("doumataolamdcroi123252");
+        searchField.sendKeys("123");
 
         // Click the search button
         WebElement searchButton = driver.findElement(By.cssSelector("button[type='submit']"));
@@ -37,7 +37,7 @@ public class StudentSearchTest {
         WebElement lastNameCell = driver.findElement(By.xpath("//table/tbody/tr/td[2]"));
         WebElement emailCell = driver.findElement(By.xpath("//table/tbody/tr/td[3]"));
 
-        Assert.assertEquals(firstNameCell.getText(), "doumataolamdcroi123252");
+        Assert.assertEquals(firstNameCell.getText(), "123");
         Assert.assertNotNull(lastNameCell.getText());
         Assert.assertNotNull(emailCell.getText());
     }
