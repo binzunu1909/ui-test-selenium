@@ -1,4 +1,4 @@
-package StudentTest;
+package student.student_delete_test;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -28,7 +28,8 @@ public class StudentDeleteTest {
     public void testDeleteButton() {
         // Find one delete button and click it
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//a[@class='btn btn-danger' and text()='Delete'] | /html/body/div/table/tbody/tr/td[4]/a[2]"));
-        int randomIndex = new Random().nextInt(deleteButtons.size());
+        int deleteButtonsBefore = deleteButtons.size();;
+        int randomIndex = new Random().nextInt(deleteButtonsBefore);
         System.out.println(randomIndex);
         WebElement randomDeleteButton = deleteButtons.get(randomIndex);
 
@@ -36,8 +37,9 @@ public class StudentDeleteTest {
         System.out.println(firstName.getText());
         randomDeleteButton.click();
 
-        //Assert
-            //store deletButtons.size() before and then compare them to after deleting
+        deleteButtons = driver.findElements(By.xpath("//a[@class='btn btn-danger' and text()='Delete'] | /html/body/div/table/tbody/tr/td[4]/a[2]"));
+
+        Assert.assertEquals(deleteButtonsBefore - 1, deleteButtons.size());
     }
 
     @After
