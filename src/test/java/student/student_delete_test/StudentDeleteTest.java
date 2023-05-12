@@ -1,7 +1,6 @@
-package StudentTest;
+package student.student_delete_test;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
