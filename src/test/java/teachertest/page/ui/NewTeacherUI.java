@@ -43,12 +43,11 @@ public class NewTeacherUI{
     }
 
 
-    public void createNewTeacher(String a, String b, String c) {
-        Teacher newTeacher = new Teacher(a,b,c);
+    public void createNewTeacher(Teacher newTeacher) {
 
-        sendKeyFirstName(a);
-        sendKeyLastName(b);
-        sendKeyEmail(c);
+        sendKeyFirstName(newTeacher.getFirstName());
+        sendKeyLastName(newTeacher.getLastName());
+        sendKeyEmail(newTeacher.getEmail());
 
         clickSubmitNewButton();
     }

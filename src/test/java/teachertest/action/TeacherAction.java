@@ -2,6 +2,7 @@ package teachertest.action;
 
 import org.openqa.selenium.WebDriver;
 import teachertest.drive.Driver;
+import teachertest.entity.Teacher;
 import teachertest.page.ui.NewTeacherUI;
 import teachertest.page.ui.TeacherUI;
 
@@ -19,20 +20,22 @@ public class TeacherAction {
 
     public void addTeacher() throws InterruptedException {
         driver.navigateTo("http://localhost:8081/teachers");
-//        String expUrl =  driver.getURLCurrent();
-//        int originalNumber = teacherUI.numTeacher();
+        String expUrl =  driver.getURLCurrent();
+        int originalNumber = teacherUI.numTeacher();
 
         teacherUI.clickAddTeacherButton();
 
-        newTeacherUI.createNewTeacher("Hang","Nguyen","hang.nguyen@restaff.no");
+        Teacher newTeacher = new Teacher("Hang","Nguyen","hang.nguyen@restaff.no");
 
-//        String actUrl =  driver.getURLCurrent();
-//        int nowNumber = teacherUI.numTeacher();
-//
-//        driver.verifyElementInt(originalNumber,nowNumber);
-//        driver.verifyElementString(expUrl,actUrl);
+        newTeacherUI.createNewTeacher(newTeacher);
 
-//        teacherUI.clickDeleteTeacherButton();
+        String actUrl =  driver.getURLCurrent();
+        int nowNumber = teacherUI.numTeacher();
+
+        driver.verifyElementInt(originalNumber,nowNumber);
+        driver.verifyElementString(expUrl,actUrl);
+
+        teacherUI.clickDeleteTeacherButton();
     }
 
     public void deleteTeacher() throws InterruptedException {
