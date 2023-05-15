@@ -15,6 +15,7 @@ public class StudentAddTest {
     private WebDriver driver;
     private StudentPage studentPage;
     private CreateStudentPage createStudentPage;
+
     @Before
     public void setUp() {
         webDriverSetup = new ChromeDriverSetup();
@@ -26,9 +27,10 @@ public class StudentAddTest {
     public void testAddStudent() {
         studentPage.navigateStudent();
         studentPage.clickAddStudent();
-        createStudentPage.fillFirstName("Billy");
-        createStudentPage.fillLastName("Nguyen");
-        createStudentPage.fillEmail("cuongnguyen3900@gmail.com");
+        createStudentPage.fillFirstName();
+        createStudentPage.fillLastName();
+        createStudentPage.fillEmail();
+        createStudentPage.clickSubmit();
     }
     @After
     public void tearDown() {

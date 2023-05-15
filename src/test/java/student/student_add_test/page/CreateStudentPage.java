@@ -4,20 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CreateStudentPage extends BasePage {
+public class CreateStudentPage extends BaseActions {
+
     public CreateStudentPage(WebDriver driver) {
         super(driver);
     }
-    public void fillFirstName (String firstName) {
-        WebElement firstNameField = driver.findElement(By.xpath("//input[@id='firstName']"));
-        firstNameField.sendKeys(firstName);
+    public void fillFirstName () {
+        enterTheValue(StudentUI.INPUT_ID_FIRST_NAME, StudentUI.FIRST_NAME);
     }
-    public void fillLastName (String lastName) {
-        WebElement lastNameField = driver.findElement(By.xpath("//input[@id='lastName']"));
-        lastNameField.sendKeys(lastName);
+    public void fillLastName () {
+        enterTheValue(StudentUI.INPUT_ID_LAST_NAME, StudentUI.LAST_NAME);
     }
-    public void fillEmail (String email) {
-        WebElement emailField = driver.findElement(By.xpath("//input[@id='email']"));
-        emailField.sendKeys(email);
+    public void fillEmail () {
+       enterTheValue(StudentUI.INPUT_ID_EMAIL, StudentUI.EMAIL);
+    }
+    public void clickSubmit () {
+        WebElement submitBtn = driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
+        submitBtn.click();
     }
 }
