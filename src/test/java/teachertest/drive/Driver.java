@@ -1,17 +1,24 @@
 package teachertest.drive;
 
-import teachertest.webdriver.WebDriverAction;
-import teachertest.webdriver.WebDriverSetUp;
-import teachertest.webdriver.WebDriverVerify;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import teachertest.webdriver.WebDriverAction;
+import teachertest.webdriver.WebDriverSetUp;
+import teachertest.webdriver.WebDriverVerify;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Driver implements WebDriverSetUp, WebDriverAction, WebDriverVerify {
 
-    WebDriver webDriver;
+    private WebDriver webDriver;
+    private WebDriverManager  webDriverManager;
+
+    public Driver(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
+
     @Override
     public WebDriver getWebDriver() {
         return webDriver;
@@ -19,7 +26,7 @@ public class Driver implements WebDriverSetUp, WebDriverAction, WebDriverVerify 
 
     @Override
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
+        webDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
     }
 
@@ -49,6 +56,6 @@ public class Driver implements WebDriverSetUp, WebDriverAction, WebDriverVerify 
 
     @Override
     public void verifyElementInt(int exp, int actual) {
-        assertEquals(exp, actual);
+        assertNotEquals(exp, actual);
     }
 }

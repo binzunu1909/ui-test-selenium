@@ -4,41 +4,53 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import teachertest.page.action.NewTeacherAction;
+import teachertest.entity.Teacher;
 
-public class NewTeacherUI implements NewTeacherAction {
+public class NewTeacherUI{
     private WebDriver driver;
     @FindBy(name = "firstName")
-    public static WebElement teacherFirstNameField;
+    private WebElement teacherFirstNameField;
     @FindBy(name = "lastName")
-    public static WebElement teacherLastNameField;
+    private WebElement teacherLastNameField;
     @FindBy(name = "email")
-    public static WebElement teacherEmailField;
+    private WebElement teacherEmailField;
     @FindBy(className = "btn-primary")
-    public static WebElement submitButton;
+    private WebElement submitButton;
 
     public NewTeacherUI(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @Override
+
     public void sendKeyFirstName(String s) {
         teacherFirstNameField.sendKeys(s);
     }
 
-    @Override
+
     public void sendKeyLastName(String s) {
         teacherLastNameField.sendKeys(s);
     }
 
-    @Override
+
     public void sendKeyEmail(String s) {
         teacherEmailField.sendKeys(s);
     }
 
-    @Override
+
     public void clickSubmitNewButton() {
         submitButton.click();
     }
+
+
+    public void createNewTeacher(Teacher newTeacher) {
+
+        sendKeyFirstName(newTeacher.getFirstName());
+        sendKeyLastName(newTeacher.getLastName());
+        sendKeyEmail(newTeacher.getEmail());
+
+        clickSubmitNewButton();
+    }
+
+
 }
