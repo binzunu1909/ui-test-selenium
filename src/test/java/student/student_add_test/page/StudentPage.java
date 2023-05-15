@@ -11,10 +11,8 @@ public class StudentPage extends BasePage {
     public void navigateStudent() {
         driver.get("http://localhost:8081/students");
     }
-    //click Add Student button
     public void clickAddStudent () {
         WebElement addStudentBtn = driver.findElement(By.xpath("//a[contains(@href, '/students/new')]"));
         addStudentBtn.click();
     }
-
 }
