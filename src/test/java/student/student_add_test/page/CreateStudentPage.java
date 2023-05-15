@@ -10,16 +10,15 @@ public class CreateStudentPage extends BaseActions {
         super(driver);
     }
     public void fillFirstName () {
-        enterTheValue(StudentUI.INPUT_ID_FIRST_NAME, StudentUI.FIRST_NAME);
+        enterValue(StudentUI.INPUT_ID_FIRST_NAME, StudentUI.FIRST_NAME);
     }
     public void fillLastName () {
-        enterTheValue(StudentUI.INPUT_ID_LAST_NAME, StudentUI.LAST_NAME);
+        enterValue(StudentUI.INPUT_ID_LAST_NAME, StudentUI.LAST_NAME);
     }
     public void fillEmail () {
-       enterTheValue(StudentUI.INPUT_ID_EMAIL, StudentUI.EMAIL);
+       enterValue(StudentUI.INPUT_ID_EMAIL, StudentUI.EMAIL);
     }
     public void clickSubmit () {
-        WebElement submitBtn = driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
-        submitBtn.click();
+        clickButton(StudentUI.BUTTON_CONTAINS_TYPE_SUBMIT);
     }
 }

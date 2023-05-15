@@ -7,5 +7,6 @@ public class StudentUI {
     public static final String FIRST_NAME = "Billy";
     public static final String LAST_NAME = "Nguyen";
     public static final String EMAIL = "cuongnguyen3900@gmail.com";
+    public static final String BUTTON_CONTAINS_TYPE_SUBMIT = "//button[contains(@type,'submit')]";
 
 }
