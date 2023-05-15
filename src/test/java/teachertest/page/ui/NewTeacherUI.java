@@ -4,18 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import teachertest.entity.Teacher;
 import teachertest.page.action.NewTeacherAction;
 
 public class NewTeacherUI implements NewTeacherAction {
     private WebDriver driver;
     @FindBy(name = "firstName")
-    public static WebElement teacherFirstNameField;
+    private WebElement teacherFirstNameField;
     @FindBy(name = "lastName")
-    public static WebElement teacherLastNameField;
+    private WebElement teacherLastNameField;
     @FindBy(name = "email")
-    public static WebElement teacherEmailField;
+    private WebElement teacherEmailField;
     @FindBy(className = "btn-primary")
-    public static WebElement submitButton;
+    private WebElement submitButton;
 
     public NewTeacherUI(WebDriver driver) {
         this.driver = driver;
@@ -41,4 +42,17 @@ public class NewTeacherUI implements NewTeacherAction {
     public void clickSubmitNewButton() {
         submitButton.click();
     }
+
+    @Override
+    public void createNewTeacher(String a, String b, String c) {
+        Teacher newTeacher = new Teacher(a,b,c);
+
+        sendKeyFirstName(a);
+        sendKeyLastName(b);
+        sendKeyEmail(c);
+
+        clickSubmitNewButton();
+    }
+
+
 }

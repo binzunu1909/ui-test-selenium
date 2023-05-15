@@ -1,66 +1,53 @@
 package teachertest.service.impl;
 
-import teachertest.object.Teacher;
-import teachertest.page.ui.NewTeacherUI;
-import teachertest.page.ui.TeacherPage;
-import teachertest.service.TeacherService;
+import org.openqa.selenium.WebDriver;
 import teachertest.drive.Driver;
+import teachertest.entity.Teacher;
+import teachertest.page.ui.NewTeacherUI;
+import teachertest.page.ui.TeacherUI;
+import teachertest.service.TeacherService;
 
 public class TeacherServiceImpl implements TeacherService {
-    private TeacherPage teacherPage;
-    private NewTeacherUI newTeacherPage;
+    private WebDriver webDriver;
     private Driver driver;
+    private TeacherUI teacherUI;
+    private NewTeacherUI newTeacherUI;
 
-    @Override
-    public void clickableButtonAdd() {
-        String exp = "http://localhost:8081/teachers/new";
-        teacherPage.clickAddTeacherButton();
-
-        driver.verifyElementString(exp,driver.getURLCurrent());
+    public TeacherServiceImpl(WebDriver webDriver) {
+        this.driver = new Driver(webDriver);
+        this.teacherUI = new TeacherUI(this.driver.getWebDriver());
+        this.newTeacherUI  = new NewTeacherUI(this.driver.getWebDriver());
     }
 
     @Override
-    public void clickableButtonUpdate() {
-    }
+    public void addTeacher() throws InterruptedException {
+        driver = this.driver;
 
-    @Override
-    public void clickableButtonDelete() {
-        int originalNumber = teacherPage.numTeacher();
-        teacherPage.clickDeleteTeacherButton();
-        int nowNumber = teacherPage.numTeacher();
-
-        driver.verifyElementInt(originalNumber,nowNumber);
-    }
-
-    @Override
-    public void addTeacher() {
+        driver.navigateTo("http://localhost:8081/teachers");
         String expUrl =  driver.getURLCurrent();
-        int originalNumber = teacherPage.numTeacher();
+        int originalNumber = teacherUI.numTeacher();
 
-        teacherPage.clickAddTeacherButton();
+        teacherUI.clickAddTeacherButton();
 
-        Teacher teacher = new Teacher("Hang","Nguyen","hang.nguyen@restaff.no");
-
-        newTeacherPage.sendKeyFirstName(teacher.getFirstName());
-        newTeacherPage.sendKeyLastName(teacher.getLastName());
-        newTeacherPage.sendKeyEmail(teacher.getEmail());
-        newTeacherPage.clickSubmitNewButton();
+        newTeacherUI.createNewTeacher("Hang","Nguyen","hang.nguyen@restaff.no");
 
         String actUrl =  driver.getURLCurrent();
-        int nowNumber = teacherPage.numTeacher();
+        int nowNumber = teacherUI.numTeacher();
 
         driver.verifyElementInt(originalNumber,nowNumber);
         driver.verifyElementString(expUrl,actUrl);
+
+        teacherUI.clickDeleteTeacherButton();
     }
 
     @Override
-    public void deleteTeacher() {
-        addTeacher();
+    public void deleteTeacher() throws InterruptedException {
 
-        int originalNumber = teacherPage.numTeacher();
-        teacherPage.clickDeleteTeacherButton();
-        int nowNumber = teacherPage.numTeacher();
+        int originalNumber = teacherUI.numTeacher();
+        teacherUI.clickDeleteTeacherButton();
+        int nowNumber = teacherUI.numTeacher();
 
         driver.verifyElementInt(originalNumber-1,nowNumber);
     }
+
 }

@@ -5,4 +5,5 @@ public interface NewTeacherAction {
     void sendKeyLastName(String s);
     void sendKeyEmail(String s);
     void clickSubmitNewButton();
+    void createNewTeacher(String a, String b, String c);
 }

@@ -1,4 +1,4 @@
-package teachertest.object;
+package teachertest.entity;
 
 public class Teacher {
     private String firstName;
