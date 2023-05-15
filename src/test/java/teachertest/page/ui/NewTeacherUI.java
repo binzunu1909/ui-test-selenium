@@ -5,9 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import teachertest.entity.Teacher;
-import teachertest.page.action.NewTeacherAction;
 
-public class NewTeacherUI implements NewTeacherAction {
+public class NewTeacherUI{
     private WebDriver driver;
     @FindBy(name = "firstName")
     private WebElement teacherFirstNameField;
@@ -23,27 +22,27 @@ public class NewTeacherUI implements NewTeacherAction {
         PageFactory.initElements(driver, this);
     }
 
-    @Override
+
     public void sendKeyFirstName(String s) {
         teacherFirstNameField.sendKeys(s);
     }
 
-    @Override
+
     public void sendKeyLastName(String s) {
         teacherLastNameField.sendKeys(s);
     }
 
-    @Override
+
     public void sendKeyEmail(String s) {
         teacherEmailField.sendKeys(s);
     }
 
-    @Override
+
     public void clickSubmitNewButton() {
         submitButton.click();
     }
 
-    @Override
+
     public void createNewTeacher(String a, String b, String c) {
         Teacher newTeacher = new Teacher(a,b,c);
 

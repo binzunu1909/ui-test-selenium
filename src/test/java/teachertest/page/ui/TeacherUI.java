@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import teachertest.page.action.TeacherAction;
+
 
 import java.util.List;
 
-public class TeacherUI implements TeacherAction {
+public class TeacherUI {
     private WebDriver driver;
 
     @FindBy(className = "mb-3")
@@ -37,27 +37,27 @@ public class TeacherUI implements TeacherAction {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @Override
+
     public void clickAddTeacherButton() {
         addTeacherButton.click();
     }
 
-    @Override
+
     public void clickUpdateTeacherButton() {
         updateTeacherButton.click();
     }
 
-    @Override
+
     public void clickDeleteTeacherButton() {
         deleteTeacherButton.click();
     }
 
-    @Override
+
     public void clickSearchTeacherButton() {
         searchTeacherButton.click();
     }
 
-    @Override
+
     public void clickRefeshTeacherButton() {
         refeshTeacherButton.click();
     }
@@ -77,12 +77,12 @@ public class TeacherUI implements TeacherAction {
 //        return emailText.getText();
 //    }
 
-    @Override
+
     public void sendKeyTeacherFirstNameInputSearch(String s) {
         teacherFirstNameInputSearch.sendKeys(s);
     }
 
-    @Override
+
     public int numTeacher() {
        return firstNameList.size();
     }
