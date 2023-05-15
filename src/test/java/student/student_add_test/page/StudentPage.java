@@ -5,14 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class StudentPage extends BaseActions {
+
     public StudentPage(WebDriver driver) {
         super(driver);
     }
-    public void navigateStudent() {
-        driver.get("http://localhost:8081/students");
+    public void navigateStudent(String studentPageURL) {
+        navigatePage(studentPageURL);
     }
-    public void clickAddStudent () {
-        WebElement addStudentBtn = driver.findElement(By.xpath("//a[contains(@href, '/students/new')]"));
-        addStudentBtn.click();
+    public void clickAddStudent (String addStudentBtnElement) {
+        clickElement(addStudentBtnElement);
     }
 }

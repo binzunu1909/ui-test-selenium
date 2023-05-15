@@ -13,10 +13,13 @@ public class BaseActions {
     public WebElement findElementByXpath(String element) {
         return driver.findElement(By.xpath(element));
     }
+    public void navigatePage(String element) {
+        driver.get(element);
+    }
     public void enterValue(String element, String value){
         findElementByXpath(element).sendKeys(value);
     }
-    public void clickButton (String element) {
+    public void clickElement(String element) {
         findElementByXpath(element).click();
     }
 }
