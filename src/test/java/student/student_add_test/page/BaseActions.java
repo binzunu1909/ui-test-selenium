@@ -16,9 +16,15 @@ public class BaseActions {
     public void navigatePage(String element) {
         driver.get(element);
     }
+
     public void enterValue(String element, String value){
         findElementByXpath(element).sendKeys(value);
     }
+    //
+
+    // Enter.theValue("abc").into(FIRST_NAME_FIELD)
+    // Builder pattern...
+
     public void clickElement(String element) {
         findElementByXpath(element).click();
     }
