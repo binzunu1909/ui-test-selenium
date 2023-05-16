@@ -18,12 +18,11 @@ public class StudentAddTest {
     private WebDriver driver;
     private StudentPage studentPage;
     private CreateStudentPage createStudentPage;
-    Student student;
+    private Student student;
 
     @Before
     public void setUp() {
-        // data
-        student = new Student("");
+        student = new Student("Jack", "Jill", "Billy@gill.com");
         webDriverSetup = new ChromeDriverSetup();
         driver = webDriverSetup.getDriver();
         studentPage = new StudentPage(driver);
@@ -31,14 +30,10 @@ public class StudentAddTest {
     }
     @Test
     public void testAddStudent() {
-
         studentPage.navigateStudent(StudentUI.STUDENT_PAGE_URL);
         studentPage.clickAddStudent(StudentUI.ADD_STUDENT_BUTTON);
-        //student.setFirstName("Eureka");
         createStudentPage.fillFirstName(StudentUI.INPUT_ID_FIRST_NAME, student.getFirstName());
-        student.setLastName("Moumen");
         createStudentPage.fillLastName(StudentUI.INPUT_ID_LAST_NAME, student.getLastName());
-        student.setEmail("ahah@gmail.com");
         createStudentPage.fillEmail(StudentUI.INPUT_ID_EMAIL, student.getEmail());
         createStudentPage.clickSubmit(StudentUI.SUBMIT_BUTTON);
     }
