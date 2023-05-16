@@ -27,7 +27,7 @@ public class StudentAddTest {
 
     @Before
     public void setUp() {
-        student = new Student("Builder", "method", "build=me@gmail.com");
+        student = new Student("Daddy", "Yankee", "whosyourdaddy@gmail.com");
         webDriverSetup = new ChromeDriverSetup();
         driver = webDriverSetup.getDriver();
         studentPage = new StudentPage(driver);
@@ -37,6 +37,8 @@ public class StudentAddTest {
     public void testAddStudent() {
         studentPage.navigateStudent(StudentUI.STUDENT_PAGE_URL);
 
+       // Find.builder().action("dd").build();
+       // Find.builder().click();
 
         Find.element(StudentUI.ADD_STUDENT_BUTTON).click();
         Enter.theValue(student.getFirstName()).into(StudentUI.INPUT_ID_FIRST_NAME);

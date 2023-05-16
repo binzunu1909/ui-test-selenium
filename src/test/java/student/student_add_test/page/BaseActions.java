@@ -5,25 +5,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class BaseActions {
-    public WebDriver driver;
+    public static WebDriver driver;
     public BaseActions(WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElement findElementByXpath(String element) {
+    public static WebElement findElementByXpath(String element) {
         return driver.findElement(By.xpath(element));
     }
     public void navigatePage(String element) {
         driver.get(element);
     }
 
-    public void enterValue(String element, String value){
+    public static void enterValue(String element, String value){
         findElementByXpath(element).sendKeys(value);
     }
-    //
 
     // Enter.theValue("abc").into(FIRST_NAME_FIELD)
-    // Builder pattern...
+    // Builder pattern... method chaining... fluent API
 
     public void clickElement(String element) {
         findElementByXpath(element).click();
